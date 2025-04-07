@@ -2,9 +2,8 @@
   "name": "helping-hand",
   "private": true,
   "resolutions": {
-    "esbuild": "0.25.0",
-    "undici": "5.28.5"
-  },
+    "esbuild": "0.25.0"
+    },
   "scripts": {
     "lint": "biome lint --write",
     "check-types": "turbo run check-types",
@@ -15,7 +14,6 @@
     "check:biome": "biome check",
     "check:types": "turbo run typecheck",
     "check-all": "pnpm run '/^check:.*/' && pnpm run -r '/^check:.*/'",
-    "check:audit": "pnpm audit",
     "fix:sherif": "pnpm dlx sherif@latest -f",
     "clean": "turbo run clean",
     "nuke": "pnpm clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm i",

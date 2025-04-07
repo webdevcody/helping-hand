@@ -8,7 +8,7 @@ import NextDocument, {
   Main,
   NextScript,
 } from 'next/document'
-import { config } from '@my/ui'
+// import { config } from '@my/ui'
 
 export default class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {

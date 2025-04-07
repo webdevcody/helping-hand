@@ -9,7 +9,7 @@ import type { ReactNode } from 'react'
 import { StyleSheet } from 'react-native'
 import { useServerInsertedHTML } from 'next/navigation'
 import { NextThemeProvider, useRootTheme } from '@tamagui/next-theme'
-import { config } from '@my/ui'
+// import { config } from '@my/ui'
 import { Provider } from 'app/provider'
 
 export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
@@ -25,7 +25,7 @@ export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
           id={rnwStyle.id}
         />
 
-        <style
+        {/* <style
           dangerouslySetInnerHTML={{
             // the first time this runs you'll get the full CSS including all themes
             // after that, it will only return CSS generated since the last call
@@ -41,7 +41,7 @@ export const NextTamaguiProvider = ({ children }: { children: ReactNode }) => {
               exclude: process.env.NODE_ENV === 'production' ? 'design-system' : null,
             }),
           }}
-        />
+        /> */}
 
         <script
           dangerouslySetInnerHTML={{
