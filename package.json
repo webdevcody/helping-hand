@@ -2,16 +2,13 @@
   "name": "helping-hand",
   "private": true,
   "resolutions": {
-    "semver": "7.7.1",
-    "minimist": "1.2.8"
+    "esbuild": "0.25.0",
+    "undici": "5.28.5"
   },
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
     "lint": "biome lint --write",
     "check-types": "turbo run check-types",
-    "native": "cd apps/native && pnpm start",
-    "web": "cd apps/web && pnpm dev",
+    "native": "cd apps/expo && pnpm start",
     "api": "cd apps/api && pnpm dev",
     "check:sherif": "pnpm dlx sherif@latest",
     "check:deps": "check-dependency-version-consistency .",
@@ -22,23 +19,49 @@
     "fix:sherif": "pnpm dlx sherif@latest -f",
     "clean": "turbo run clean",
     "nuke": "pnpm clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm i",
-    "test": "turbo run test",
-    "format": "biome format --write"
+    "format": "biome format --write",
+    "native:prebuild": "cd apps/expo && pnpm prebuild",
+    "ios": "cd apps/expo && pnpm ios",
+    "android": "cd apps/expo && pnpm android",
+    "watch": "ultra -r --no-pretty --concurrency 400 watch",
+    "vercel:install": "pnpm set version 3.5 && pnpm install",
+    "web": "pnpm build && cd apps/next && pnpm next",
+    "web:extract": "DISABLE_EXTRACTION=false pnpm workspace next-app dev",
+    "web:prod": "pnpm workspace next-app build",
+    "web:prod:serve": "pnpm workspace next-app serve",
+    "postinstall": "pnpm check-tamagui && pnpm build",
+    "build": "pnpm run -r --filter=!next-app build",
+    "upgrade:tamagui": "pnpm up '*tamagui*'@latest '@tamagui/*'@latest react-native-web-lite@latest",
+    "upgrade:tamagui:canary": "pnpm up '*tamagui*'@canary '@tamagui/*'@canary react-native-web-lite@canary",
+    "check-tamagui": "tamagui check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@babel/runtime": "^7.26.0",
     "@biomejs/biome": "1.9.4",
+    "@tamagui/cli": "^1.125.33",
     "@turbo/gen": "^2.5.0",
     "check-dependency-version-consistency": "^5.0.0",
+    "eslint": "^9.3.0",
+    "husky": "^9.1.6",
     "lefthook": "1.11.6",
+    "prettier": "^3.3.3",
     "turbo": "^2.5.0",
-    "typescript": "catalog:"
+    "typescript": "catalog:",
+    "ultra-runner": "^3.10.5",
+    "vitest": "^2.1.1"
   },
   "packageManager": "pnpm@10.7.0",
   "engines": {
     "node": ">=22"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@biomejs/biome", "lefthook"]
+    "onlyBuiltDependencies": [
+      "@biomejs/biome",
+      "lefthook"
+    ]
   },
   "version": "0.0.0"
 }

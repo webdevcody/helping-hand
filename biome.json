@@ -1,58 +1,113 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
-  },
-  "files": {
-    "ignoreUnknown": false,
-    "ignore": ["**/.turbo/**", "**/typescript-config/**"]
-  },
-  "formatter": {
-    "enabled": true,
-    "useEditorconfig": true,
-    "formatWithErrors": false,
-    "indentStyle": "space",
-    "indentWidth": 2,
-    "lineEnding": "lf",
-    "lineWidth": 120,
-    "attributePosition": "auto",
-    "bracketSpacing": true
-  },
+  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
   "organizeImports": {
-    "enabled": true
+    "enabled": false
   },
   "linter": {
     "enabled": true,
+    "ignore": [
+      ".tamagui",
+      "*/ios/**",
+      ".vscode",
+      "**/tamagui.css",
+      "**/*.d.ts",
+      "packages/vendor/**",
+      "packages/**/vendor/**",
+      "**/tsconfig.json",
+      "**/dist/**",
+      "**/package.json",
+      ".codesandbox",
+      "tsconfig.base.json"
+    ],
+
     "rules": {
-      "recommended": false
-    },
-    "ignore": ["**/public", "**/.cache", "**/node_modules", "**/.turbo/**"]
+      "correctness": {
+        "useExhaustiveDependencies": "off",
+        "noInnerDeclarations": "off",
+        "noUnnecessaryContinue": "off",
+        "noConstructorReturn": "off"
+      },
+      "suspicious": {
+        "noImplicitAnyLet": "off",
+        "noConfusingVoidType": "off",
+        "noEmptyInterface": "off",
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off",
+        "noDoubleEquals": "off",
+        "noConsoleLog": "error",
+        "noAssignInExpressions": "off",
+        "noRedeclare": "off"
+      },
+      "style": {
+        "noParameterAssign": "off",
+        "noNonNullAssertion": "off",
+        "noArguments": "off",
+        "noUnusedTemplateLiteral": "off",
+        "useDefaultParameterLast": "off",
+        "useConst": "off",
+        "useEnumInitializers": "off",
+        "useTemplate": "off",
+        "useSelfClosingElements": "off",
+        "useImportType": "error"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off",
+        "noDangerouslySetInnerHtmlWithChildren": "off"
+      },
+      "performance": {
+        "noDelete": "off",
+        "noAccumulatingSpread": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "noBannedTypes": "off",
+        "noUselessFragments": "off",
+        "useLiteralKeys": "off",
+        "useSimplifiedLogicExpression": "off",
+        "useOptionalChain": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useMediaCaption": "off",
+        "noHeaderScope": "off",
+        "useAltText": "off",
+        "useButtonType": "off"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 100,
+    "attributePosition": "multiline",
+    "ignore": [
+      ".tamagui",
+      "**/ios/**",
+      ".vscode",
+      "**/tamagui.css",
+      "**/*.d.ts",
+      "packages/vendor/**",
+      "packages/**/vendor/**",
+      "**/tsconfig.json",
+      "**/dist/**",
+      "**/package.json",
+      ".codesandbox",
+      "tsconfig.base.json"
+    ]
   },
   "javascript": {
     "formatter": {
+      "trailingCommas": "es5",
       "jsxQuoteStyle": "double",
-      "quoteProperties": "asNeeded",
-      "trailingCommas": "none",
-      "semicolons": "always",
-      "lineWidth": 120,
-      "arrowParentheses": "asNeeded",
-      "bracketSameLine": false,
-      "quoteStyle": "single",
-      "attributePosition": "auto",
-      "bracketSpacing": true
+      "semicolons": "asNeeded",
+      "quoteStyle": "single"
     }
   },
-  "overrides": [
-    {
-      "include": ["tsconfig.*.json"],
-      "json": {
-        "parser": {
-          "allowComments": true,
-          "allowTrailingCommas": true
-        }
-      }
-    }
-  ]
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  }
 }

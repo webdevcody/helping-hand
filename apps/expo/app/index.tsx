@@ -1,26 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-// import { Button } from "@repo/ui";
+import { HomeScreen } from 'app/features/home/screen'
+import { Stack } from 'expo-router'
 
-export default function Native() {
+export default function Screen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>Native</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <>
+      <Stack.Screen
+        options={{
+          title: 'Home',
+        }}
+      />
+      <HomeScreen />
+    </>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  header: {
-    fontWeight: 'bold',
-    marginBottom: 20,
-    fontSize: 36
-  }
-});
