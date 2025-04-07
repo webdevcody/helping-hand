@@ -15,6 +15,7 @@
     "check:types": "turbo run typecheck",
     "check-all": "pnpm run '/^check:.*/' && pnpm run -r '/^check:.*/'",
     "fix:sherif": "pnpm dlx sherif@latest -f",
+    "ci": "pnpm run check-all",
     "clean": "turbo run clean",
     "nuke": "pnpm clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm i",
     "format": "biome format --write",

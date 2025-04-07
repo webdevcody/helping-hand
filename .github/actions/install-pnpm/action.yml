@@ -1,0 +1,33 @@
+name: Install deps
+description: Install dependencies
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: '.nvmrc'
+
+    - name: Read PNPM version from package.json
+      shell: bash
+      run: |
+        PNPM_VERSION=$(jq -r '.packageManager' package.json 2>/dev/null | sed 's/^pnpm@//')
+        
+        if [ -z "$PNPM_VERSION" ]; then
+          PNPM_VERSION="10.0.0"
+          echo "Could not read pnpm version from package.json, will use default value: $PNPM_VERSION"
+        else
+          echo "Will install PNPM version: $PNPM_VERSION read from package.json"
+        fi
+        echo PNPM_VERSION=$PNPM_VERSION >> $GITHUB_ENV
+
+    - name: Install pnpm
+      shell: bash
+      run: |
+        npm install -g @pnpm/exe@"${{ env.PNPM_VERSION }}"
+        pnpm -v
+
+    - name: "Install dependencies"
+      shell: bash
+      run: pnpm install --frozen-lockfile
