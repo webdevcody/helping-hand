@@ -1,0 +1,44 @@
+{
+  "name": "helping-hand",
+  "private": true,
+  "resolutions": {
+    "semver": "7.7.1",
+    "minimist": "1.2.8"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "biome lint --write",
+    "check-types": "turbo run check-types",
+    "native": "cd apps/native && pnpm start",
+    "web": "cd apps/web && pnpm dev",
+    "api": "cd apps/api && pnpm dev",
+    "check:sherif": "pnpm dlx sherif@latest",
+    "check:deps": "check-dependency-version-consistency .",
+    "check:biome": "biome check",
+    "check:types": "turbo run typecheck",
+    "check-all": "pnpm run '/^check:.*/' && pnpm run -r '/^check:.*/'",
+    "check:audit": "pnpm audit",
+    "fix:sherif": "pnpm dlx sherif@latest -f",
+    "clean": "turbo run clean",
+    "nuke": "pnpm clean && rm -rf node_modules && rm -rf pnpm-lock.yaml && pnpm i",
+    "test": "turbo run test",
+    "format": "biome format --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@turbo/gen": "^2.5.0",
+    "check-dependency-version-consistency": "^5.0.0",
+    "lefthook": "1.11.6",
+    "turbo": "^2.5.0",
+    "typescript": "catalog:"
+  },
+  "packageManager": "pnpm@10.7.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@biomejs/biome", "lefthook"]
+  },
+  "version": "0.0.0"
+}

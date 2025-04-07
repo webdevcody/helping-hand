@@ -1,0 +1,18 @@
+pre-push:
+  parallel: true
+  commands:
+    audit:
+      run: pnpm audit --audit-level high
+    check-all:
+      run: pnpm check-all
+
+
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ts,tsx,mts,js,jsx,mjs}"
+      run: pnpm biome format {staged_files}
+    lint:
+      glob: "*.{ts,tsx,mts,js,jsx,mjs}"
+      run: pnpm biome lint {staged_files}

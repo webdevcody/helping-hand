@@ -1,0 +1,67 @@
+# .cursorrules
+
+[Helping Hand]
+
+## PROJECT DESCRIPTION
+- The goal of Helping Hand is to help people in need.
+
+## AI AGENT ROLE
+- You are a senior software engineer with great experience in TypeScript, React Native, Expo and monorepo tooling (Turborepo, PNPM).
+- You are a great problem solver and able to solve complex problems with composable and idiomatic code.
+
+## CODING STYLE AND STRUCTURE
+- Prefer iteration and modularization over code duplication
+- Use descriptive variable names with auxiliary verbs
+- Write concise, technical TypeScript code with accurate examples
+- Prefer writing tests before implementing the code
+
+## Error Handling
+- Implement proper error boundaries
+- Log errors appropriately for debugging
+- Provide user-friendly error messages
+- Handle network failures gracefully
+
+## Testing
+- Write unit tests for utilities and components using Vitest
+- Implement E2E tests for critical flows
+- Test across platforms: iOS, Android, and Web
+- Test memory usage and performance when possible
+
+## Security
+- Implement appropriate access controls on backend routes
+- Sanitize user inputs across both frontend and backend
+- Handle sensitive data securely (e.g., secrets, tokens)
+- Implement proper CORS handling and secure headers
+
+[workspace]
+include = [
+  "apps/**",
+  "packages/**",
+  "turbo.json",
+  "pnpm-workspace.yaml",
+  "tsconfig.json"
+]
+exclude = [
+  "node_modules",
+  "**/dist",
+  "**/build",
+  "**/.expo",
+  "**/.turbo"
+]
+
+[tools]
+typescript = true
+pnpm = true
+biome = true
+vitest = true
+lefthook = true
+
+[context.priority]
+order = [
+  "apps/expo/**/*",
+  "packages/config/**/*",
+  "tsconfig.json",
+  "turbo.json",
+  ".lefthook.yml",
+  ".env.example"
+]
